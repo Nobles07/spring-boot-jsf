@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core"
+	  xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+<ui:composition template="../layout.xhtml">
+	<ui:define name="content">
+		<h:form id="productForm">
+			<p:panel header="Product Details">
+				<h:panelGrid columns="1">
+					<p:outputLabel for="lotcode" value="Lot Code: " />
+					<p:inputText width="12" maxlength="12" readonly="true" id="lotcode" value="#{wine2Controller.wine.lotCode}" />
+					<p:outputLabel for="description" value="Description: " />
+					<p:inputTextarea width="60" maxlength="60"  id="description" value="#{wine2Controller.wine.description}" />
+					<p:outputLabel for="volume" value="Volume: " />
+					<p:inputNumber readonly="true" id="volume" value="#{wine2Controller.wine.volume}" />
+					<p:outputLabel for="tankCode" value="Tank: " />
+					<p:inputText width="6" maxlength="6" readonly="true" id="tankCode" value="#{wine2Controller.wine.tankCode}" />
+					<p:outputLabel for="productState" value="Product state: " />
+					<p:inputText width="20" maxlength="20" id="productState" value="#{wine2Controller.wine.productState}" />
+					<p:outputLabel for="ownerName" value="Owner: " />
+					<p:inputText width="20" maxlength="20" readonly="true" id="ownerName" value="#{wine2Controller.wine.ownerName}" />
+				</h:panelGrid>
+			</p:panel>
+			<p:panel header="Composition Details">
+				<p:dataTable id="table" var="composition" value="#{wine2Controller.composition}">
+					<p:column>
+						<f:facet name="header">Year Breakdown Composition:</f:facet>
+						<h:inputTextarea value="#{composition.yearBreakdownComposition}" rows="5" style="width:150"/>
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">Region Breakdown Composition:</f:facet>
+						<h:inputTextarea value="#{composition.regionBreakdownComposition}" rows="5" style="width:150" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">Variety Breakdown Composition:</f:facet>
+						<h:inputTextarea value="#{composition.varietyBreakdownComposition}" rows="5" style="width:150" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">Year And Variety Breakdown Composition:</f:facet>
+						<h:inputTextarea value="#{composition.yearAndVarietyBreakdownComposition}" cols="25" rows="5" style="width:150" />
+					</p:column>
+				</p:dataTable>
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
